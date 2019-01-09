@@ -5,15 +5,21 @@ import Sidermenus from './menu';
 import styles from './index.less';
 import Scrollbar from '../ScrollBar';
 
+
 class Navleft extends PureComponent {
     render(){
         
         const{
             theme ,
             collapsed ,
-            //onThemeChange,
+            
         } = this.props
         
+        function onThemeChange(theme){
+            return theme === 'dark' ? 'light' : 'dark'
+        }
+
+        console.log(theme)
         return(
         <Layout.Sider
             width={256}
@@ -41,22 +47,20 @@ class Navleft extends PureComponent {
                   />
                </Scrollbar>
               </div>
-              {collapsed ? null : (
+             {collapsed ? null : ( 
                 <div className={styles.switchTheme}>
-                    <span>
+                    <span className={styles.sty2}>
                     <Icon type="bulb" />
                     <span>Switch Theme</span>
                     </span>
                     <Switch
-                    onChange={                       
-                            theme === 'dark' ? 'light' : 'dark'                         
-                    }
+                    onChange={ () => onThemeChange }
                     defaultChecked={theme === 'dark'}
                     checkedChildren={`Dark`}
                     unCheckedChildren={`Light`}
                     />
-                </div>
-               )}
+                </div>               
+                )}
             </Layout.Sider>
         )
     }
@@ -65,7 +69,7 @@ class Navleft extends PureComponent {
 Navleft.propTypes = {
     theme: PropType.string,
     collapsed: PropType.bool,
-    //onThemeChange: PropType.func,
+    onThemeChange: PropType.func,
 }
 
 export default Navleft
