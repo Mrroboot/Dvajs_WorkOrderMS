@@ -3,20 +3,19 @@ import SiderMenu from '../components/Navleft';
 
 import { connect } from 'dva';
 
-const  homes = ({ dispatch, products }) => {
-    function onThemeChange(theme) {
-        dispatch({
-          type: 'home/handleThemeChange',
-          payload: theme,
-        });
-    }
+const  homes = ({ dispatch, theme, collapsed }) => {
     return (
         <div>
-            <SiderMenu theme={onThemeChange} collapsed={false} />
+            <SiderMenu theme={theme} collapsed={collapsed} />
         </div>
     );
 };
 
-export default connect(({ home }) => ({
-    home,
-}))(homes);
+function mapStateToProps(state) {
+    const { theme, collapsed } = state.home;
+    return {
+      theme,
+      collapsed,
+    };
+  }
+  export default connect(mapStateToProps)(homes);

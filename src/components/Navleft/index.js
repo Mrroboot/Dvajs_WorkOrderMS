@@ -11,7 +11,7 @@ class Navleft extends PureComponent {
         const{
             theme ,
             collapsed ,
-            onThemeChange,
+            //onThemeChange,
         } = this.props
         
         return(
@@ -65,7 +65,7 @@ class Navleft extends PureComponent {
 Navleft.propTypes = {
     theme: PropType.string,
     collapsed: PropType.bool,
-    onThemeChange: PropType.func,
+    //onThemeChange: PropType.func,
 }
 
 export default Navleft
