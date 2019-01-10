@@ -1,18 +1,17 @@
-
-
 export default {
 
-    namespace: 'home',
+  namespace: 'home',
 
-    state: {
-        theme: "dark",
-        collapsed: false,
-    },
+  state: {
+    theme: "dark",
+    collapsed: false,
+  },
 
-    reducers: {
-        ThemeChange(state, { payload: { data: theme, collapsed } }) {
-            return { ...state, theme, collapsed };
-          },
+  reducers: {
+    switchTheme(state, {payload}) {
+      state.theme = payload.theme;
+      return state
     },
+  },
 
 }
