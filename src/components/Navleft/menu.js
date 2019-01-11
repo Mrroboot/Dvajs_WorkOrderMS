@@ -9,8 +9,8 @@ const  SubMenu  = Menu.SubMenu;
 class SiderMenu extends PureComponent {
 
     state = {
-        openKeys: [],        
-    };
+        openKeys: [],   
+     };
 
     componentDidMount(){
         const menuTreeNode = this.renderMenu(menuconfig);
@@ -83,6 +83,7 @@ class SiderMenu extends PureComponent {
 SiderMenu.propTypes = {
     theme: PropTypes.string,
     collapsed: PropTypes.bool,
+   
 }
     
 export default SiderMenu

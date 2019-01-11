@@ -7,37 +7,44 @@ import Scrollbar from '../ScrollBar';
 
 
 class Navleft extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      theme: "dark",
-      collapsed: false
-    }
-  }
 
-  onThemeChange = () => {
-    const now = this.state.theme === 'dark' ? 'light' : 'dark';
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     theme: "light",
+  //   }
+  // }
+  
+  // onThemeChange = () => {
+  //   const now = this.state.theme === 'dark' ? 'light' : 'dark';
 
-    this.setState({
-      theme: now
-    })
-  };
+  //   this.setState({
+  //     theme: now
+  //   })
+  // };
 
   render() {
-
+    const {
+      theme,
+      onThemeChange,
+      collapsed,
+      onCollapseChange,
+    } = this.props
     return (
       <Layout.Sider
-        width={256}
-        theme={this.state.theme}
+        width={215}
+        theme={theme}
         breakpoint="lg"
         trigger={null}
         collapsible
-        collapsed={false}
+        collapsed={collapsed}
         className={styles.sider}>
         <div className={styles.brand}>
           <div className={styles.logo}>
             <img src="logo-ant.svg" alt="logo"/>
-            <h1>WORK ORDER MS</h1>
+            {console.log(collapsed)}
+            {console.log(theme)}
+            {collapsed? null:<h1>WORK ORDER MS</h1>}
           </div>
         </div>
         <div className={styles.menuContainer}>
@@ -47,20 +54,27 @@ class Navleft extends React.Component {
             }}
           >
             <Sidermenus
-              theme={this.state.theme}
-              collapsed={false}
+              theme={theme}
+              collapsed={collapsed}
+              onCollapseChange={onCollapseChange}
             />
           </Scrollbar>
         </div>
-        {this.state.collapsed ? null : (
+        {collapsed ? <div className={styles.switchTheme}></div> : (
           <div className={styles.switchTheme}>
-                    <span className={styles.sty2}>
+                    <span 
+                      className={ theme === 'dark' ? styles.sty2: null }>
                     <Icon type="bulb"/>
                     <span>Switch Theme</span>
                     </span>
             <Switch
-              onChange={this.onThemeChange}
-              defaultChecked={this.state.theme === 'dark'}
+              onChange={ onThemeChange.bind(
+                this,
+                theme === 'dark' ? 'light' : 'dark'
+              )}
+              defaultChecked={theme === 'dark'}
+              checkedChildren={`Dark`}
+              unCheckedChildren={`Light`}
             />
           </div>
         )}
@@ -70,8 +84,9 @@ class Navleft extends React.Component {
 }
 
 Navleft.propTypes = {
-  theme: PropType.string,
+  theme: PropType.string, 
   collapsed: PropType.bool,
+  onCollapseChange: PropType.func,
   onThemeChange: PropType.func,
 }
 
