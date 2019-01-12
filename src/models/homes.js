@@ -1,23 +1,20 @@
-import store from 'store';
 
 export default {
 
   namespace: 'homes',
 
   state: {
-    theme:  store.get('theme') || 'dark',
-    collapsed: store.get('collapsed') || false,
+    theme: 'dark', 
+    collapsed: false,
   },
 
   reducers: { 
-    handleThemeChange(state, { payload }) {
-      store.set('theme', payload)
-      state.theme = payload
+    handleThemeChange(state, { payload:theme }) {
+      return {...state, theme}
     },
 
-    handleCollapseChange(state, { payload }) {
-      store.set('collapsed', payload)
-      state.collapsed = payload
+    handleCollapseChange(state, { payload:collapsed }) {
+      return {...state, collapsed}
     },
 
   },

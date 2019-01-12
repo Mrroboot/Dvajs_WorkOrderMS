@@ -3,10 +3,11 @@ import { Row, Col } from 'antd';
 import PropTypes from 'prop-types';
 import SiderMenu from '../components/Navleft';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import styles from './../style/common.less'
 import { connect } from 'dva';
 
-@connect(({ homes }) => ({ homes }))
+// @connect(({ homes }) => ({ homes }))
 class Homes extends Component {
 
   onCollapseChange = collapsed => {
@@ -46,6 +47,7 @@ class Homes extends Component {
         <Row className="content">
           
         </Row>
+        <Footer />
       </Col>
     </Row>
     );
@@ -58,7 +60,10 @@ Homes.propTypes ={
   dispatch: PropTypes.func,
 }
 
-export default Homes;
-// export default connect(({ homepage }) => ({
-//   homepage,
-// }))(Homes);
+//export default Homes;
+export default connect(({ homes }) => ({
+  homes,
+}))(Homes);
+
+
+//export default connect(['homes'],({homes})=>({...homes}))(Homes);

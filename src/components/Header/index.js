@@ -7,30 +7,13 @@ import styles from './index.less';
 const { SubMenu } = Menu
 class Header extends React.PureComponent {
    
-    constructor(props) {
-        super(props);
-        this.state = {
-          fixed: false,   
-        //   collapsed: null,
-        //   onCollapseChange : () =>{
-        //         return !this.state.collapsed
-        //   }
-        }
-    }
 
 
-    // handelClickMenu = e => {
-    //     e.key === 'SignOut' && this.props.onSignOut()
-    // };
+    handelClickMenu = e => {
+        e.key === 'SignOut' && this.props.onSignOut()
+    };
    
-    // onCollapseChange = () =>{
-    //     const now = this.state.collapsed;
-    //     this.setState({
-    //       collapsed: !now
-    //     })
-    //     console.log(this.state.collapsed)
 
-    // };
 
     render() {
        const {
@@ -55,48 +38,50 @@ class Header extends React.PureComponent {
                 </Menu>       
         ]
         
-        // rightContent.unshift(
-        //     <Popover
-        //         placement="bottomRight"
-        //         trigger="click"
-               
-        //         overlayClassName={styles.notificationPopover}
-        //         getPopupContainer={() => document.querySelector('#layoutHeader')}
-        //         content={
-        //         <div className={styles.notification}>
-        //             <List
-        //             itemLayout="horizontal"
-        //             locale={{
-        //                 emptyText: <span>You have viewed all notifications.</span>,
-        //             }}
-        //             renderItem={item => (
-        //                 <List.Item className={styles.notificationItem}>
-        //                 <List.Item.Meta
+        rightContent.unshift(
+            <Popover
+                placement="bottomRight"
+                trigger="click"
+                key=""
+                overlayClassName={styles.notificationPopover}
+                getPopupContainer={() => document.querySelector('#layoutHeader')}
+                content={
+                <div className={styles.notification}>
+                    <List
+                    itemLayout="horizontal"
+                    locale={{
+                        emptyText: <span>You have viewed all notifications.</span>,
+                    }}
+                    renderItem={item => (
+                        <List.Item className={styles.notificationItem}>
+                        <List.Item.Meta
                            
-        //                 />
-        //                 <Icon
-        //                     style={{ fontSize: 10, color: '#ccc' }}
-        //                     type="right"
-        //                     theme="outlined"
-        //                 />
-        //                 </List.Item>
-        //             )}
-        //             />
-        //         </div>
-        //         }>
-        //         <Badge
-        //         dot
-        //         offset={[-10, 10]}
-        //         className={styles.iconButton}
-        //         >
-        //         <Icon className={styles.iconFont} type="bell" />
-        //         </Badge>
-        //     </Popover>
-        // )
+                        />
+                        <Icon
+                            style={{ fontSize: 10, color: '#ccc' }}
+                            type="right"
+                            theme="outlined"
+                        />
+                        </List.Item>
+                    )}
+                    />{
+                        ///消息接口还没写
+                    }
+                </div>
+                }>
+                <Badge
+                dot
+                offset={[-10, 10]}
+                className={styles.iconButton}
+                >
+                <Icon className={styles.iconFont} type="bell" />
+                </Badge>
+            </Popover>
+        )
         return(
             <Layout.Header
             className={classnames(styles.header, {
-              [styles.fixed]: this.state.fixed,
+              [styles.fixed]: true,
               [styles.collapsed]: collapsed,
             })}
             id="layoutHeader"
@@ -121,7 +106,6 @@ class Header extends React.PureComponent {
 }
 
 Header.propTypes = {
-    fixed: PropTypes.bool,
     collapsed: PropTypes.bool,
     user: PropTypes.object,
     onSignout: PropTypes.func,

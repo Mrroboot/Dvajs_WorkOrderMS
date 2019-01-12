@@ -8,21 +8,6 @@ import Scrollbar from '../ScrollBar';
 
 class Navleft extends React.Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     theme: "light",
-  //   }
-  // }
-  
-  // onThemeChange = () => {
-  //   const now = this.state.theme === 'dark' ? 'light' : 'dark';
-
-  //   this.setState({
-  //     theme: now
-  //   })
-  // };
-
   render() {
     const {
       theme,
@@ -42,8 +27,6 @@ class Navleft extends React.Component {
         <div className={styles.brand}>
           <div className={styles.logo}>
             <img src="logo-ant.svg" alt="logo"/>
-            {console.log(collapsed)}
-            {console.log(theme)}
             {collapsed? null:<h1>WORK ORDER MS</h1>}
           </div>
         </div>
