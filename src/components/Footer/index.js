@@ -1,22 +1,11 @@
-import React, { PureComponent, Fragment } from 'react'
-import PropTypes from 'prop-types'
-import { Breadcrumb, Icon } from 'antd'
-import styles from './index.less'
-
-class Footer extends PureComponent {
-  
-  render() {
-
-    return (
-      <Breadcrumb className={styles.Footer}>
-       
-      </Breadcrumb>
-    )
-  }
+import React from 'react'
+import './index.less'
+export default class Footer extends React.Component {
+    render() {
+        return (
+            <div className="footer">
+               推荐使用谷歌浏览器，可以获得更佳操作页面体验
+            </div>
+        );
+    }
 }
-
-Footer.propTypes = {
-  routeList: PropTypes.array,
-}
-
-export default Footer
