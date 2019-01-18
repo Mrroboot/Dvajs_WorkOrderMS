@@ -16,13 +16,12 @@ class Login extends Component {
             form: {
                 getFieldDecorator,
                 validateFieldsAndScroll
-              },  
-              loginLoading,       
+              },   
         } = this.props
 
-        // const {            
-        //     loginLoading
-        // } = login
+        const {            
+            loginLoading
+        } = login
         
         function handleOk () {
             validateFieldsAndScroll((errors, values) => {
